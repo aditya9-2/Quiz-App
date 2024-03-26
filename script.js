@@ -56,21 +56,27 @@ const allQuestions = [
     }
 ]
 
+const container = document.querySelector('.container');
 const questions = document.querySelector('.show-question');
 const answers = document.querySelectorAll('.options');
-
 const button = document.querySelector('.btn');
-// // console.log(questions);
-// // console.log(answerss);
-
 
 const h2 = document.createElement('h2');
 questions.appendChild(h2);
-console.log(h2);
 
+
+let correct = 0;
+let incorrect = 0;
 let index = 0;
+let questionLength = allQuestions.length;
+
 
 const loadquestions = () => {
+
+    if (index === questionLength) {
+
+        return handleQuizEnd();
+    }
 
     const viewQuestion = allQuestions[index].question;
 
@@ -79,19 +85,93 @@ const loadquestions = () => {
     loadOptions();
 
 
-}
+};
 
 loadOptions = () => {
 
+    handleResetChecked();
     const getOptions = allQuestions[index].options;
 
     answers[0].nextElementSibling.innerText = getOptions.A;
     answers[1].nextElementSibling.innerText = getOptions.B;
     answers[2].nextElementSibling.innerText = getOptions.C;
 
+};
+
+
+
+button.addEventListener('click', submitQuiz = () => {
+
+    const correctAns = allQuestions[index].correctAnswer;
+
+    const answer = getAnswer();
+
+    if (answer === correctAns) {
+
+        correct += 2;
+    }
+    else {
+        incorrect++;
+    }
+    index++;
+    loadquestions();
+    loadOptions();
+
+
+});
+
+getAnswer = () => {
+
+    let answer;
+
+    answers.forEach((input) => {
+        if (input.checked) {
+
+            answer = input.value;
+
+        }
+
+    });
+
+    return answer;
+};
+
+handleResetChecked = () => {
+
+    answers.forEach(input => {
+
+        input.checked = false;
+
+    });
+
+
+};
+
+handleQuizEnd = () => {
+
+    container.innerHTML = `
+        <p> Thank you for playing.</p>
+        <p>Your score Total Score is - ${correct} / 10</p>
+        <button id="playAgain">Play Again</button>
+    
+    `
+    refreshPage();
+
+
 }
 
-loadquestions()
+refreshPage = () => {
+
+    const playAgainBtn = document.getElementById('playAgain');
+
+    playAgainBtn.addEventListener('click', () => {
+        window.location.reload();
+    });
+
+}
+
+
+loadquestions();
 
 
 

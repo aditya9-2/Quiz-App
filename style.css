@@ -34,15 +34,27 @@ main {
 .container {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
     width: 800px;
-    /* height: 600px; */
     background-color: rgb(215, 233, 230);
     margin: 10px 0;
     border-radius: 10px;
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.687);
 }
+
+.container p:first-child {
+
+    font-size: 25px;
+    text-align: center;
+}
+
+.container p:nth-child(2) {
+    font-size: 20px;
+    line-height: 35px;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
 
 .show-question {
     margin: 10px 12px;
@@ -52,7 +64,15 @@ main {
     position: relative;
     left: 37px;
     line-height: 30px;
+}
 
+
+.show-options input[type="radio"] {
+    cursor: pointer;
+}
+
+.show-options label {
+    cursor: pointer;
 }
 
 form {
@@ -69,6 +89,23 @@ form {
 }
 
 .submit button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    color: #ffffff;
+    transition: .35s all ease-out;
+
+}
+
+#playAgain {
+    width: 85px;
+    margin: 23px 4px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3fabf3;
+}
+
+#playAgain:hover {
     cursor: pointer;
     opacity: 0.8;
     color: #ffffff;
