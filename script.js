@@ -151,6 +151,7 @@ handleQuizEnd = () => {
 
     container.innerHTML = `
         <p> Thank you for playing.</p>
+        <p>Incorrect - ${incorrect}</p>
         <p>Your score Total Score is - <span id ='score'> ${correct} </span> / 10</p>
         <button id="playAgain">Play Again</button>
     
