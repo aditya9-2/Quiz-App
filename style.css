@@ -55,6 +55,7 @@ main {
     margin: 20px 0;
     text-align: center;
     font-weight: bold;
+    width: 600px;
 }
 
 
@@ -113,6 +114,10 @@ form {
     color: #ffffff;
     transition: .35s all ease-out;
 
+}
+
+#score {
+    color: #3f60f3;
 }
 
 @media screen and (max-width: 450px) {
